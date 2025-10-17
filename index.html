@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coze Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #chat-container {
+      width: 400px;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container"></div>
+
+  <!-- SDK của Coze -->
+  <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js"></script>
+
+  <script>
+    // Khởi tạo chatbot
+    new CozeWebSDK.WebChatClient({
+      config: {
+        bot_id: '7560208977481777168', // 👉 Thay bằng bot_id của bạn
+      },
+      componentProps: {
+        title: 'Coze Chatbot', // Tiêu đề hiển thị
+        layout: 'embedded', // Tùy chọn hiển thị: 'embedded' hoặc 'float'
+        targetElement: '#chat-container' // Nơi hiển thị chatbot
+      },
+      auth: {
+        type: 'token',
+        token: 'pat_tlEhNTlZm8TTmDTd5JawnNLHyf6J2WxvOP9PTA30dPcouE3wYSq6rUtqfbPCw4lX', // 👉 Thay bằng token thật của bạn
+        onRefreshToken: function () {
+          // Có thể cập nhật token động tại đây
+          return 'pat_********';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
